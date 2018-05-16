@@ -1,0 +1,18 @@
+---
+title: "mapping"
+author: "Lianna Novitz"
+date: "5/15/2018"
+output: html_document
+---
+
+```{r}
+library(leaflet) #install package
+```
+
+```{r}
+m <- leaflet() %>%
+  addTiles() %>%
+  addMarkers(lng = -118.5945790 , lat = 34.1889210 , popup = "Where I am")
+
+m
+```
