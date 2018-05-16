@@ -6,27 +6,7 @@ output: html_document
 ---
 
 ```{r}
-library(leaflet) #install package
-```
-
-```{r}
-m <- leaflet() %>%
-  addTiles() %>%
-  addMarkers(lng = -118.5945790 , lat = 34.1889210 , label = "Senders Communications Group", labelOptions = labelOptions(noHide = T)) %>%
-  addMarkers(lng = -119.490979 , lat = 34.384655 , label = "Procore Technologies", labelOptions = labelOptions(noHide = T)) %>%
-    addMarkers(lng = -118.798264 , lat = 34.154527, label = "inVia Robotics", labelOptions = labelOptions(noHide = T)) %>%
-    addMarkers(lng = -118.586820 , lat = 34.422016 , label = "Scorpion", labelOptions = labelOptions(noHide = T)) %>%
-    addMarkers(lng = -118.927817 , lat = 34.203383 , label = "SAGE Publishing", labelOptions = labelOptions(noHide = T)) %>%
-    addMarkers(lng = -118.919498 , lat = 34.192376 , label = "Amgen", labelOptions = labelOptions(noHide = T)) %>%
-    addMarkers(lng = -118.493384 , lat = 34.157591 , label = "mPulse Mobile", labelOptions = labelOptions(noHide = T)) %>%
-    addMarkers(lng = -118.525161 , lat = 34.256909 , label = "Medtronic", labelOptions = labelOptions(noHide = T)) %>%
-    addMarkers(lng = -118.583282 , lat = 34.456474 , label = "Boston Scientific Corporation", labelOptions = labelOptions(noHide = T)) %>%
-    addMarkers(lng = -118.601154 , lat = 34.442436 , label = "Advanced Bionics",
-    labelOptions = labelOptions(noHide = T))
-
-m
-```
-```{r}
+library(leaflet)
 library(shiny)
 ```
 
@@ -50,8 +30,6 @@ server <- function(input, output, session) {
   points <- eventReactive(input$recalc, {
     cbind(rnorm(40) * 2 + 13, rnorm(40) + 48)
   }, ignoreNULL = FALSE)
-  
-  points2 <- 
 
   output$mymap <- renderLeaflet({
     leaflet() %>%
@@ -60,7 +38,15 @@ server <- function(input, output, session) {
       ) %>%
       addMarkers(lng = -118.5945790 , lat = 34.1889210 , label = "Senders Communications Group", labelOptions = labelOptions(noHide = T)) %>%
     addMarkers(lng = -118.601154 , lat = 34.442436 , label = "Advanced Bionics",
-    labelOptions = labelOptions(noHide = T))
+    labelOptions = labelOptions(noHide = T, textsize = "8px")) %>%
+  addMarkers(lng = -119.490979 , lat = 34.384655 , label = "Procore Technologies", labelOptions = labelOptions(noHide = T)) %>%
+    addMarkers(lng = -118.798264 , lat = 34.154527, label = "inVia Robotics", labelOptions = labelOptions(noHide = T)) %>%
+    addMarkers(lng = -118.586820 , lat = 34.422016 , label = "Scorpion", labelOptions = labelOptions(noHide = T, textsize = "8px")) %>%
+    addMarkers(lng = -118.927817 , lat = 34.203383 , label = "SAGE Publishing", labelOptions = labelOptions(noHide = T)) %>%
+    addMarkers(lng = -118.919498 , lat = 34.192376 , label = "Amgen", labelOptions = labelOptions(noHide = T)) %>%
+    addMarkers(lng = -118.493384 , lat = 34.157591 , label = "mPulse Mobile", labelOptions = labelOptions(noHide = T)) %>%
+    addMarkers(lng = -118.525161 , lat = 34.256909 , label = "Medtronic", labelOptions = labelOptions(noHide = T)) %>%
+    addMarkers(lng = -118.583282 , lat = 34.456474 , label = "Boston Scientific", labelOptions = labelOptions(noHide = T, textsize = "8px"))
   })
 }
 ```
