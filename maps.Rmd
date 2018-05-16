@@ -26,4 +26,45 @@ m <- leaflet() %>%
 
 m
 ```
+```{r}
+library(shiny)
+```
 
+```{r}
+r_colors <- rgb(t(col2rgb(colors()) / 255))
+names(r_colors) <- colors()
+```
+
+```{r}
+ui <- fluidPage(
+  leafletOutput("mymap"),
+  p(),
+  actionButton("recalc", "New points")
+)
+```
+
+
+```{r}
+server <- function(input, output, session) {
+
+  points <- eventReactive(input$recalc, {
+    cbind(rnorm(40) * 2 + 13, rnorm(40) + 48)
+  }, ignoreNULL = FALSE)
+  
+  points2 <- 
+
+  output$mymap <- renderLeaflet({
+    leaflet() %>%
+      addProviderTiles(providers$Stamen.TonerLite,
+        options = providerTileOptions(noWrap = TRUE)
+      ) %>%
+      addMarkers(lng = -118.5945790 , lat = 34.1889210 , label = "Senders Communications Group", labelOptions = labelOptions(noHide = T)) %>%
+    addMarkers(lng = -118.601154 , lat = 34.442436 , label = "Advanced Bionics",
+    labelOptions = labelOptions(noHide = T))
+  })
+}
+```
+
+```{r}
+shinyApp(ui, server)
+```
