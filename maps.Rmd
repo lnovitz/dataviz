@@ -12,7 +12,17 @@ library(leaflet) #install package
 ```{r}
 m <- leaflet() %>%
   addTiles() %>%
-  addMarkers(lng = -118.5945790 , lat = 34.1889210 , popup = "Where I am")
+  addMarkers(lng = -118.5945790 , lat = 34.1889210 , popup = "Where I Am") %>%
+  addMarkers(lng = -119.490979 , lat = 34.384655 , popup = "Procore Technologies") %>%
+    addMarkers(lng = -118.798264 , lat = 34.154527, popup = "inVia Robotics") %>%
+    addMarkers(lng = -118.586820 , lat = 34.422016 , popup = "Scorpion") %>%
+    addMarkers(lng = -118.927817 , lat = 34.203383 , popup = "SAGE Publishing") %>%
+    addMarkers(lng = -118.919498 , lat = 34.192376 , popup = "Amgen") %>%
+    addMarkers(lng = -118.493384 , lat = 34.157591 , popup = "mPulse Mobile") %>%
+    addMarkers(lng = -118.525161 , lat = 34.256909 , popup = "Medtronic") %>%
+    addMarkers(lng = -118.583282 , lat = 34.456474 , popup = "Boston Scientific Corporation") %>%
+    addMarkers(lng = -118.601154 , lat = 34.442436 , popup = "Advanced Bionics") 
 
 m
 ```
+
